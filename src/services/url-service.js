@@ -11,15 +11,18 @@ async function createRandomShortCode(link) {
     })
 
     if (exists) {
-
         createRandomShortCode(link)
     }
 
-    return await URLs.create({
-        id: genCode,
-        code: int2radix64(genCode),
-        link: link
-    })
+    try {
+        await URLs.create({
+            id: genCode,
+            code: int2radix64(genCode),
+            link: link
+        })
+    } catch (Exception e) {
+//
+    }
 
 
 
